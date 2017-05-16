@@ -1,0 +1,6 @@
+MariaDb_syntax.txt
+ALTER TABLE login ADD COLUMN 
+      role varchar(255);
+        
+
+alter table blog add column id MEDIUMINT NOT NULL AUTO_INCREMENT PRIMARY KEY;
