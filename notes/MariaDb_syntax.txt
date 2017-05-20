@@ -4,3 +4,4 @@ ALTER TABLE login ADD COLUMN
         
 
 alter table blog add column id MEDIUMINT NOT NULL AUTO_INCREMENT PRIMARY KEY;
+aleter table login add column random MEDIUMINT;

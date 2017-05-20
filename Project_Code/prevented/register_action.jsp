@@ -1,13 +1,22 @@
-<%@include file="db.jsp" %><%
+<%@include file="db.jsp" %>
+<%@page import="java.util.*" %>
+<%
 //get form input
 String fullname = request.getParameter( "fullname" );
 String user = request.getParameter( "user" );
 String pass = request.getParameter( "pass" );
+String role = request.getParameter("role");
+Random rand = new Random();
+int random = rand.nextInt(90000) + 10000;
 
-String sqlStr = "insert into login(fullname,user, pass) values ('" + fullname + "', '" + user + "', sha2('"+ pass + "', 256))";
+
+//make a salted password
+pass = pass + random; 
+String sqlStr = "insert into login(fullname,user, pass, role, random) values ('" + fullname + "', '" + user + "', sha2('"+ pass + "', 256), "+role +" , "+ random+")";
 Statement stmt = con.createStatement();
 stmt.execute(sqlStr);
 response.sendRedirect("login_form.html"); 
+
 %>
 
 
