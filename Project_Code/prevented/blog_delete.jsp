@@ -42,6 +42,17 @@ else if(rs.getString(1).equals("admin"))
 	PreparedStatement delete_prep = con.prepareStatement(delete_query);
 	delete_prep.setString(1,blog_id);
 	delete_prep.execute();
+	int count = delete_prep.getUpdateCount();
+	if(count > 0)
+	{
+		//sucess
+		response.sendRedirect("blog_list.jsp");
+	}
+	else
+	{
+		//faile 
+		response.sendRedirect("blog_list.jsp");
+	}
 }
 
 /*

@@ -26,7 +26,8 @@ this blog is used the following techs.
 
 ```
 ## Reference 
-https://mariadb.com/kb/en/mariadb/varchar/
+- https://mariadb.com/kb/en/mariadb/varchar/
+- https://books.google.com/books?id=3k9ucms335AC&pg=PA136&lpg=PA136&dq=stringescapeutils+jsp+import&source=bl&ots=2gHL6ic_DR&sig=kGZhC_FojhVt9tIjtFsswSjYyv8&hl=en&sa=X&sqi=2&ved=0ahUKEwjzmsHnh4PUAhWnsFQKHVAFBO4Q6AEIWzAJ#v=onepage&q=stringescapeutils%20jsp%20import&f=false
 
 ## Database Setup
 Even though this blog is powered by XAMPP, it is `not recommended to set up DB from PHP Admin  
