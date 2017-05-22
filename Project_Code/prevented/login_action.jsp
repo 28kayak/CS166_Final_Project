@@ -21,7 +21,7 @@ String sqlStr2 = "SELECT * FROM login WHERE user=? and pass = sha2(?, 256)";
 PreparedStatement prepared_statement1 = con.prepareStatement(sqlStr2);
 prepared_statement1.setString(1,user);
 prepared_statement1.setString(2,pass);
-ResultSet rs1 = prepared_statement1.executeQuery();
+ResultSet rs1 = prepared_statement.executeQuery();
 if ( rs1.next() ) {
 	session.setAttribute( "user", user );
 	session.setAttribute( "username", rs1.getString(1) );

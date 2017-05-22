@@ -1,21 +1,37 @@
 <%@include file="db.jsp" %>
 <%@page import="java.util.*" %>
 <%
-//get form input
-String fullname = request.getParameter( "fullname" );
-String user = request.getParameter( "user" );
-String pass = request.getParameter( "pass" );
-String role = request.getParameter("role");
-Random rand = new Random();
-int random = rand.nextInt(90000) + 10000;
+//check capcha 
+String user_ans = request.getParameter("capcha");
+String answer = String.valueOf(session.getAttribute("capcha_answer"));
+if(user_ans.equals(answer))
+{
+	//ensured that registration is done by human beings.
+	//get form input
+	String fullname = request.getParameter( "fullname" );
+	String user = request.getParameter( "user" );
+	String pass = request.getParameter( "pass" );
+	String role = request.getParameter("role");
+	Random rand = new Random();
+	int random = rand.nextInt(100) + 1;
 
 
-//make a salted password
-pass = pass + random; 
-String sqlStr = "insert into login(fullname,user, pass, role, random) values ('" + fullname + "', '" + user + "', sha2('"+ pass + "', 256), "+role +" , "+ random+")";
-Statement stmt = con.createStatement();
-stmt.execute(sqlStr);
-response.sendRedirect("login_form.html"); 
+	//make a salted password
+	pass = pass + random; 
+	//String sqlStr = "insert into login(fullname,user, pass, role, random) values ('" + fullname + "', '" + user + "', sha2('"+ pass + "', 256), "+ role +' , '+ salt+')';
+	String sqlStr = "insert into login(fullname,user, pass, role, random) values ('" + fullname + "', '" + user + "', sha2('"+ pass + "', 256), '" + role + "' , '" + random + "')";
+
+	Statement stmt = con.createStatement();
+	stmt.execute(sqlStr);
+	session.setAttribute("capcha_result", true);
+	response.sendRedirect("login_form.html"); 
+}
+else
+{
+	session.setAttribute("capcha_result", false);
+	response.sendRedirect("register_form.jsp");
+}
+
 
 %>
 
