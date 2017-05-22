@@ -19,7 +19,7 @@ ResultSet rs = prepared_statement.executeQuery();
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>My CS166 Blog Site <span style="float:right"> Welcome <%= username %> &nbsp;&nbsp;&nbsp;&nbsp;<a href="logout_action.jsp">logout</a> &nbsp;&nbsp;&nbsp;&nbsp;</span></h1>
+<h1>My CS166 Blog Site <span style="float:right"> Welcome <%= user %> &nbsp;&nbsp;&nbsp;&nbsp;<a href="logout_action.jsp">logout</a> &nbsp;&nbsp;&nbsp;&nbsp;</span></h1>
 
 <hr>
 <h1>Blog entries</h1>
