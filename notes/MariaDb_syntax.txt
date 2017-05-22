@@ -1,7 +1,21 @@
 MariaDb_syntax.txt
+Add Columns 
 ALTER TABLE login ADD COLUMN 
       role varchar(255);
         
 
 alter table blog add column id MEDIUMINT NOT NULL AUTO_INCREMENT PRIMARY KEY;
 aleter table login add column random MEDIUMINT;
+
+
+-------------------ERROR LIST-------------------------------------------------------
+#1  Unknown column in 'field list' error on MySQL Update query
+Possible Solution 
+Enclose any string to be passed to the mysql server inside single quotes; e.g.:
+
+$name = "my name"
+$query = " INSERT INTO mytable VALUES ( 1 , '$name') "
+Note that although the query is enclosed between double quotes, you must enclose any string in single quotes.
+Reference 
+http://stackoverflow.com/questions/1346209/unknown-column-in-field-list-error-on-mysql-update-query
+

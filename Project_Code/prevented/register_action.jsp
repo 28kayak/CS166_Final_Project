@@ -18,7 +18,7 @@ if(user_ans.equals(answer))
 
 	//make a salted password
 	pass = pass + random; 
-	//String sqlStr = "insert into login(fullname,user, pass, role, random) values ('" + fullname + "', '" + user + "', sha2('"+ pass + "', 256), "+ role +' , '+ salt+')';
+	
 	String sqlStr = "insert into login(fullname,user, pass, role, random) values ('" + fullname + "', '" + user + "', sha2('"+ pass + "', 256), '" + role + "' , '" + random + "')";
 
 	Statement stmt = con.createStatement();
