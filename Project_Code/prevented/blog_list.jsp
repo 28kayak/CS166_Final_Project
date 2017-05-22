@@ -27,7 +27,7 @@ while ( rs.next() ) {
 %>
 <hr>
 <h3>Add a blog item</h2>
-<form action="blog_action.jsp">
+<form action="blog_action.jsp" method="post">
 Blog Title: <input name="blogtitle" size=100/><br>
 <textarea name="blogcontent" rows="10" cols="100"></textarea><br>
 <input type="submit" value="Add Blog"/>
