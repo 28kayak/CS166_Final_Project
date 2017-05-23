@@ -10,8 +10,8 @@
 <td><input type="text" value='<%= session.getAttribute("user") %>' /></td> <br>
 <td>Username: </td>
 <td><input type="text" value='<%= session.getAttribute("username") %>' /></td> <br>
-<td>getstr2 </td>
-<td><input type="text" value='<%= session.getAttribute("getstr2") %>' /></td> <br>
+<td>ROLE </td>
+<td><input type="text" value='<%= session.getAttribute("DB_role") %>' /></td> <br>
 <td>operand1: </td>
 <td><input type="text" value='<%= session.getAttribute("operand1") %>' /></td><br>
 <td>operand2:</td>

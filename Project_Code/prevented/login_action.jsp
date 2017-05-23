@@ -1,6 +1,7 @@
-<%@include file="db.jsp" %><%
-
-//Check user
+<%@include file="db.jsp" %>
+<%@page import="java.security.SecureRandom"%>
+<%
+//get user id and passwrod from html form
 String user = request.getParameter( "user" );
 String pass = request.getParameter( "pass" );
 boolean isAuth = false;
@@ -20,7 +21,7 @@ if ( rs.getInt(1) == 1 ) isAuth=true;
 
 
 
-//get user's salt 
+//***************get user's salt******************************** 
 String sql_query = "SELECT * FROM login WHERE user=?";
 PreparedStatement prepared_query = con.prepareStatement(sql_query);
 prepared_query.setString(1, user);
@@ -30,22 +31,35 @@ ResultSet result_set = prepared_query.executeQuery();
 if(result_set.next())
 {
 	int user_salt = result_set.getInt("random");
+	//add salt to user's password to be same with password in DB
 	pass = pass + user_salt;
 }
 
-
-
+//
 String sqlStr2 = "SELECT * FROM login WHERE user=? and pass = sha2(?, 256)";
 PreparedStatement prepared_statement1 = con.prepareStatement(sqlStr2);
 prepared_statement1.setString(1,user);
 prepared_statement1.setString(2,pass);
 ResultSet rs1 = prepared_statement1.executeQuery();
 if ( rs1.next() ) {
+	//*****************login success********************* 
+	//*** add synchonizer token 
+	//generate secure random for synchonizer token 
+	SecureRandom secureRandom = SecureRandom.getInstance("SHA1PRNG");
+	int sync_token = secureRandom.nextInt();
+	//***** set session valiables ********
 	session.setAttribute("DB_role", rs1.getString("role"));
 	session.setAttribute( "user", user );
 	session.setAttribute( "username", rs1.getString("fullname") );
+	session.setAttribute("sync_token",sync_token );
+
+	//***** send back blog list page ******
 	response.sendRedirect("blog_list.jsp");	
-} else {
+
+} 
+else
+{
+	//************ not able to login ************
 	response.sendRedirect("login_form.html");
 }
 %>
