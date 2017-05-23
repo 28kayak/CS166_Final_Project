@@ -4,7 +4,7 @@
 This is the entire source code for security information blog for cs166.
 These codes are running at
 
-http://ec2-34-208-99-244.us-west-2.compute.amazonaws.com:8080/CS166_Final_Project/Project_Code/prevented/register_form.jsp 
+http://ec2-34-208-99-244.us-west-2.compute.amazonaws.com:8080/CS166_Final_Project/Project_Code/prevented/index.html
 
 ## File Explnation 
 - `notes` contains db syntax that is used to create this site.  
