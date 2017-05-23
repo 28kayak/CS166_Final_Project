@@ -38,7 +38,7 @@
         added.getValue()+"<BR>");
     %>
     <H2>New cookie</H2>
-    <FORM>
+    <FORM method="post">
       <P>Name: <INPUT TYPE='TEXT' NAME='name'></P>
       <P>Value: <INPUT TYPE='TEXT' NAME='value'></P>
       <INPUT TYPE='SUBMIT' VALUE='Add new value'>

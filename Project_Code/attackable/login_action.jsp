@@ -3,7 +3,7 @@
 //Check user
 String user = request.getParameter( "user" );
 String pass = request.getParameter( "pass" );
-String sqlStr = "SELECT fullname FROM login WHERE user='" + user + "' and pass = sha2('"+ pass + "', 256)";
+String sqlStr = "SELECT fullname FROM login WHERE user='" + user + "' and pass=sha2('"+ pass + "', 256)";
 
 //out.print(sqlStr);
 

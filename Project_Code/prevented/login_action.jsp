@@ -17,14 +17,33 @@ if ( rs.getInt(1) == 1 ) isAuth=true;
 
 //Statement stmt = con.createStatement();
 //ResultSet rs1 = stmt.executeQuery(sqlStr);
+
+
+
+//get user's salt 
+String sql_query = "SELECT * FROM login WHERE user=?";
+PreparedStatement prepared_query = con.prepareStatement(sql_query);
+prepared_query.setString(1, user);
+//execute query and receive result as result set object 
+ResultSet result_set = prepared_query.executeQuery();
+//Move cursor to the first row 
+if(result_set.next())
+{
+	int user_salt = result_set.getInt("random");
+	pass = pass + user_salt;
+}
+
+
+
 String sqlStr2 = "SELECT * FROM login WHERE user=? and pass = sha2(?, 256)";
 PreparedStatement prepared_statement1 = con.prepareStatement(sqlStr2);
 prepared_statement1.setString(1,user);
 prepared_statement1.setString(2,pass);
-ResultSet rs1 = prepared_statement.executeQuery();
+ResultSet rs1 = prepared_statement1.executeQuery();
 if ( rs1.next() ) {
+	session.setAttribute("DB_role", rs1.getString("role"));
 	session.setAttribute( "user", user );
-	session.setAttribute( "username", rs1.getString(1) );
+	session.setAttribute( "username", rs1.getString("fullname") );
 	response.sendRedirect("blog_list.jsp");	
 } else {
 	response.sendRedirect("login_form.html");

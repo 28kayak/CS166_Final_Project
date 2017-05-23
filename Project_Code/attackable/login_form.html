@@ -5,9 +5,17 @@
 <body>
 
 <form action="login_action.jsp">
+<fieldset>
+<h3>This is attackable site of CS166 Blog.</h3><br>
+<h3>You may want to type the following instead of ID</h3>
+
+<code>a ' OR '1'='1' -- </code>
+<h3>to attack with SQL injection.</h3>
+<p>Note:a ' OR '1'='1' -- this may end up to 500.</p>
 <label>Login ID:</label><input name="user" /><br>
 <label>Password:</label> <input name="pass" type="password" /><br>
 <input type="submit" value="login"/>
+</fieldset>
 </form>
 
 </body>
