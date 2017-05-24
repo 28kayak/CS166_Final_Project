@@ -10,7 +10,13 @@ byte[] pt = indata.getBytes();
 if ( encoding.equalsIgnoreCase("Base64") ) { //Base64 encoded
 	pt = Base64.getDecoder().decode(indata);
 }
+if(k == null || etype == null)
+{
+	response.sendRedirect("crypt_form.html");
+}
 
+//if(etype.equalsIgnoreCase("RC4"))
+//{
 //Do encryption: RC4
 Cipher rc4 = Cipher.getInstance("RC4");
 Key key = new SecretKeySpec(k,"RC4");
@@ -25,4 +31,7 @@ if ( etype.equalsIgnoreCase("encrypt") ) { //Encryption
 	byte[] pt2 = rc4.doFinal(pt);
 	out.println( new String( pt2 ) );
 }
+
+//}
+
 %>
