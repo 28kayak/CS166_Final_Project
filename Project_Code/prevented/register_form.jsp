@@ -37,6 +37,7 @@ session.setAttribute("sync_token",sync_token );
 			<input name="role" type="radio" value="normal" checked> Normal
 			<input name="role" type="radio" value="admin"> Administorator
 			<br>
+			<h2>CAPCHA</h2>
 			<h3>Answer the following question.</h3><br>
 			<h4><%= session.getAttribute("operand1") %> +
 			 <%=session.getAttribute("operand2") %> </h4>
